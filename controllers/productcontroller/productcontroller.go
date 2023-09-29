@@ -60,7 +60,7 @@ func Update(c *gin.Context) {
 	}
 
 	if models.DB.Model(&product).Where("id = ?", id).Updates(&product).RowsAffected == 0 {
-		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"message": "tidak dapat mengupdate product"})
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"message": "tidak bisa mengupdate product"})
 		return
 	}
 
@@ -83,7 +83,7 @@ func Delete(c *gin.Context) {
 
 	id, _ := input.Id.Int64()
 	if models.DB.Delete(&product, id).RowsAffected == 0 {
-		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"message": "Tidak dapat menghapus product"})
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"message": "Tidak bisa menghapus product"})
 		return
 	}
 
